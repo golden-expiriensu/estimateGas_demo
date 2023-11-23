@@ -24,13 +24,10 @@ contract Main {
 
     function doWork(address optionalWorker) external {
         console2.log("gas before call: %s", gasleft());
-        (bool success, ) = optionalWorker.call(
-            abi.encodeCall(OptionalWorker.doOptionalWork, ())
-        );
+        (bool success,) = optionalWorker.call(abi.encodeCall(OptionalWorker.doOptionalWork, ()));
         console2.log("success: %s", success);
 
         console2.log("gas after call: %s", gasleft());
         jobDone = true;
     }
 }
-
